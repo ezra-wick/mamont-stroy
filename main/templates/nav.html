@@ -1,0 +1,28 @@
+{% load static%}
+
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top py-lg-4" id="mainNav">
+        <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#"><img id="logo" class="text-expanded" href="#" 
+            src="{% static '/media/logo.png' %}">ваш подрядчик</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav mx-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'about-name' %}">О нас</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'uslugi' %}">услуги</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'prices' %}">Цены</a></li>
+                
+                {% if user.is_authenticated %}
+                {% if request.user.is_staff %}
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'prices_enter' %}">Добавить</a></li>
+                {% endif %}
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/admin/">{{user.username}}</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}">Выйти</a></li>
+                {%else%}
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+</nav>
+    

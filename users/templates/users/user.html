@@ -1,0 +1,30 @@
+{% extends 'index.html'%}
+{% block content%}
+
+    <div class="form-section">
+        <form method="POST">
+            <h2>Авторизация на сайте</h2>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-dark">Войти</button>
+            <button type="submit" class="btn-red">Восстановить пароль</button>
+        </form>
+        <hr>
+        Нет аккаунта? <a href="">Создать пользователя</a> 
+    </div>
+
+{%endblock%}
+
+
+
+
+{%block aside_new%}
+
+<img src="https://i.ibb.co/hL54dRs/story-wu.jpg"width="100%" height="100%">
+    <p><strong>Узнай о том как эти ребята начинали свой путь.</strong></p>
+    <a href="/history" target="_blank">
+        <button type="button" class="btn btn-dark">Узнать</button>
+    </a>
+
+
+{%endblock aside_new%}

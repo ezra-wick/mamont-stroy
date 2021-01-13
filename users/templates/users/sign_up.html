@@ -1,0 +1,29 @@
+{% extends 'blog/main.html'%}
+{% block main_section%}
+
+    <div class="form-section">
+        <form method="POST">
+            <h2>Регистрация на сайте</h2>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-dark">Зарегистрироваться</button>
+        </form>
+        <hr>
+        Уже зарегистрированы? <a href="sign_up">Войти в личный кабинет</a>
+    </div>
+
+{%endblock%}
+
+
+
+
+{%block aside_new%}
+
+<img src="https://i.ibb.co/hL54dRs/story-wu.jpg"width="100%" height="100%">
+    <p><strong>Узнай о том как эти ребята начинали свой путь.</strong></p>
+    <a href="/history" target="_blank">
+        <button type="button" class="btn btn-dark">Узнать</button>
+    </a>
+
+
+{%endblock aside_new%}

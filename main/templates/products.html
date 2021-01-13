@@ -1,0 +1,10 @@
+{% extends "base.html" %}   
+{% load static %}  
+{% block content %}
+{% if request.user.is_staff %}
+{% include "prod_login.html" %}
+{%else%}
+{% include "prod_annonym.html" %}
+{% endif %}
+
+{% endblock content %}

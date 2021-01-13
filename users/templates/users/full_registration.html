@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+
+
+<div class="row inline-block-row">
+{% block content%}
+                
+            <div class="col-12 col-md-6 col-sm-5 col-lg-3">
+                <div class="card text-center text-black mb-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    border-radius: 5px;" id='total-orders'>
+                        <hr>
+                        <h3 style="text-align: center">Моя страница</h3>
+                        <hr>
+                        <img class="rounded" src="{{request.user.customer.img.url}}" >
+                        <h2 style="text-align: center">{{request.user.customer.name}}</h2>
+                        <a class="btn btn-warning" href="{% url 'epix:index' %}"> &#8592; Назад </a>
+                    </div>
+
+            
+                    <div class="card text-center text-black mb-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    border-radius: 5px;" id='total-orders'>
+                            <form method="POST" enctype="multipart/form-data">
+                                <h2>НАСТРОЙКА СТРАНИЦЫ</h2>
+                                {% csrf_token %}
+                                {{ update_user|crispy}}
+                                {{img_profile}}
+                                <button type="submit" class="btn-dark">Подтвердить</button>
+                            </form>
+                    </div>   
+            </div>
+
+                <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
+                    <div class="card text-center text-black mb-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                        border-radius: 5px;font-size:19px; text-overflow: ellipsis; white-space: nowrap;overflow: hidden;" id='total-orders'>
+                    {% include "users/orders_table.html" %} 
+                    </div>  
+                </div>  
+
+
+    </div>
+{%endblock%}
+
+</div>

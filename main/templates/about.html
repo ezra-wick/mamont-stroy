@@ -1,0 +1,25 @@
+{% extends "base.html" %}   
+
+{% load static %}  
+
+{% block content %}
+<h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">узнайте больше</span><span class="site-heading-lower">о компании</span></h1>
+
+    <section class="page-section about-heading">
+        <div class="container"><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static '/media/about.jpg' %}">
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-lg-10 col-xl-9 mx-auto">
+                       
+                        {% if request.user.is_staff %}
+                        {% include "about_loged.html" %}
+                        {%else%}
+                        {% include "about_annonym.html" %}
+                        {% endif %} 
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

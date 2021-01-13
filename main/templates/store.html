@@ -1,0 +1,80 @@
+{% extends "base.html" %}   
+{% load static %}  
+{% block content %}
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    
+                   
+                    <div class="cta-inner text-center rounded">
+                        <h2 class="section-heading mb-5"><span class="section-heading-upper">цены на ремонтные работы</span>
+                            {% for category in categories%}
+                            <span id="main-category">{{category.categorian}}                             
+                                {% if request.user.is_staff %}   
+                                <div class="card-header text-center">
+                                <a class="btn btn-success" href="{{category.id}}/edit" role="button">Изменить</a>  
+                                <a class="btn btn-danger" href="{{category.id}}/delete" role="button">Удалить</a>  
+                                </div>
+                                {% endif %}</span></h2>                                     
+
+                        <div class="table-responsive" id="table-textt">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" id="table_one_header">Название работы</th>
+                                        <th>Ед.&nbsp;<br>изм.</th>
+                                        <th>Цена&nbsp;<br>(руб)&nbsp;<br></th>
+                                        {% if request.user.is_staff %} 
+                                        <th class="text-center" id="table_one_header">Изменить</th>
+                                        <th class="text-center" id="table_one_header">Удалить</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                {% for c in category.get_products %}
+                                <tbody>
+                                    <tr>
+                                        <td>{{c.name}}</td>
+                                        <td>{{c.measure}}</td>
+                                        <td>{{c.price}}</td>
+                    
+                                        {% if request.user.is_staff %} 
+                                        <td class="text-center" id="table_one_header"><a class="btn btn-success" href="{{c.id}}/{{c.name}}/edit" role="button">Изменить</a> </td>
+                                        <td class="text-center" id="table_one_header"><a class="btn btn-danger" href="{{c.id}}/{{c.name}}/delete" role="button">Удалить</a></td>
+                                        {% endif %}
+                                    </tr>                    
+  
+                                    <tr></tr>
+
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        {% endfor %}
+                        <p class="address mb-5"><em><strong>1116 Orchard Street</strong><span><br>Golden Valley, Minnesota</span></em></p>
+                        <p class="address mb-0"><small><em>Остались вопросы?</em></small><span><br>+7 (915) 387-62-04</span></p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section about-heading">
+        <div class="container"><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static '/media/about.jpg' %}">
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-lg-10 col-xl-9 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4"><span class="section-heading-upper">как мы работаем</span><span id='textinprices' class="section-heading-lower">Условия взаимодействия</span></h2>
+                            <p>Многим из наших клиентов удобно, когда мы выполняем работы после 18:00 или даже по выходным и праздничным дням. Мы готовы работать для Вас и в ночное время, причем без каких либо доплат!&nbsp;</p>
+                            <p class="mb-0">Для того чтобы заключить договор необходимо определится с техническим заданием и подготовить сметный расчёт. Чтобы упростить весь процесс мы отправим к Вам специалиста, который с ваших слов запишет всё что нужно сделать и позже
+                                наш менеджер пришлёт Вам на почту коммерческое предложение в расценках ТСН МГЭ или в свободном формате таблицей в EXCEL. После этого мы обговариваем все нюансы, подписываем договор и приступаем к работе. Чаще всего клиент выделяет
+                                50% аванса, но в некоторых случаях мы готовы пойти на встречу и начать с меньшего аванса и поэтапно закрывать объект. <br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock content %}

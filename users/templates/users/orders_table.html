@@ -1,0 +1,35 @@
+
+    <table class='table table-striped w-auto'>
+        <thead>
+        <tr class="table-info">
+            <th>Имя: </th>
+            <th>Фамилия: </th>
+            <th>Почта: </th>
+            <th>Адрес: </th> 
+            <th>Индекс: </th>
+            <th>Город: </th>
+            <th>Дата заказа: </th>
+            <th>Дата обновления: </th>
+            <th>Оплачен: </th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ord in orders%}
+        <tr>
+            <td>{{ord.first_name}}</td>
+            <td>{{ord.last_name}}</td>
+            <td>{{ord.email}}</td>
+            <td>{{ord.address}}</td>
+            <td>{{ord.postal_code}}</td>
+            <td>{{ord.city}}</td>
+            <td>{{ord.created}}</td>
+            <td>{{ord.updated}}</td>
+            <td>{{ord.paid}}</td>                    
+            <td><a href="">Обновить</a></td>
+            <td><a href="">Удалить</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>

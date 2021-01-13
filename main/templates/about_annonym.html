@@ -1,0 +1,9 @@
+
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4"><span class="section-heading-upper">Информация о нашей организации</span><span id="about-header" class="section-heading-lower">&nbsp;ип мамонтов а.в.</span></h2>
+                            <p> {% for category in title_name%}     
+                                {%for p in category.get_products%}
+                                {{p.text_one|safe}}
+                                {%endfor%}
+                                {%endfor%}</p>
+                        </div>

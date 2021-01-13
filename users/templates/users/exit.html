@@ -1,0 +1,22 @@
+{% extends 'blog/main.html'%}
+
+{% block main_section%}
+    <div class="form-section">
+            <h2>Вы успешно вышли из аккаунта!</h2>
+      <a href="{% url 'user'%}">Войти в личный кабинет</a>
+    </div>   
+{%endblock%}
+
+
+
+
+{%block aside_new%}
+
+<img src="https://i.ibb.co/hL54dRs/story-wu.jpg"width="100%" height="100%">
+    <p><strong>Узнай о том как эти ребята начинали свой путь.</strong></p>
+    <a href="/history" target="_blank">
+        <button type="button" class="btn btn-dark">Узнать больше</button>
+    </a>
+
+
+{%endblock aside_new%}

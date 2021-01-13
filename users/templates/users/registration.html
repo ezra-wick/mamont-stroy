@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} Последние обновления {% endblock %}
+
+{% block content%}
+    <div class="container" style="font-family: 'Gill Sans'; font-size: 20px;">
+    <div class="form-section card mb-5" style="background-color: #32B2CD;">
+        <div class='offset-3 col-9 col-sm-6 card mb-5 mt-3'>
+        <form method="POST">
+            <h2>Регистрация на сайте</h2>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="card center-block">
+            <button type="submit" class="btn-dark center-block" >Зарегистрироваться</button></div>
+        </form>
+        <hr>
+        <div class="card center-block text-center mb-3"> Уже зарегистрированы?<a href="{% url 'login'%}">Войти в личный кабинет</a></div>
+        </div>
+    </div>
+</div>
+{%endblock content%}
+
+
+
+{%block aside_new%}
+
+<img src="https://sun9-41.userapi.com/c856024/v856024070/48d7d/BYpnDxzoiXY.jpg"width="30%" height="30%">
+    <p><strong>Узнай о том как эти ребята начинали свой путь.</strong></p>
+    <a href="/history" target="_blank">
+        <button type="button" class="btn btn-dark">Узнать больше</button>
+    </a>
+
+
+{%endblock aside_new%}
+
+

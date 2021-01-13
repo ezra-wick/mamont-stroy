@@ -1,0 +1,46 @@
+{% extends "base.html" %}   
+{% load static %}  
+{% load crispy_forms_tags %}
+<title>Главная - Mamontov</title>
+{% block content %}
+<h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">строительная компания</span><span class="site-heading-lower">Mamontov</span></h1>
+    <section class="page-section clearfix">
+        <div class="container">
+            {%if messages%}
+            {%for mess in messages%}
+              <div class="alert alert-success">
+                {{mess}}
+              </div>
+            {%endfor%}
+          {%endif%}
+          {{one_post}}
+
+          {%for p in one_post%}
+          {{p.text}}
+          {{p.id}}
+          {%endfor%}     
+
+
+
+            </div>
+        </div>
+    </section>
+    <section id="second" class="page-section cta">
+
+
+    <div class="bg-modal">
+        <div class="modal-contents">
+    
+            <div class="close">+</div>
+            <img  class="text-expanded" src="{% static '/media/logo.jpg' %}" style="max-height: 96px;" alt="">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy}}
+                <button type="submit" class="btn-dark">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
